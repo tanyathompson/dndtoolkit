@@ -1,0 +1,32 @@
+<div>
+  <h1>Create Encounter</h1>
+  <form [formGroup]="newEncounterForm" (ngSubmit)="addNewEncounter()">
+    Name: <input formControlName="name" type="text">
+    Combatants: <input formControlName="combatants" type="text">
+    Submit: <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<div>
+  <h1>List Encounters</h1>
+  <table class="table">
+    <tr>
+      <td>Name</td>
+      <td>Combatants</td>
+      <td>ID</td>
+    </tr>
+    <tr *ngFor="let encounter of encounterList">
+      <td>{{encounter.name}}</td>
+      <td><p *ngFor="let combatant of encounter.prettyCombatants">{{combatant}}</p></td>
+      <td>{{encounter._id}}</td>
+    </tr>
+  </table>
+</div>
+
+<div>
+  <h1>Update Encounter</h1>
+</div>
+
+<div>
+  <h1>Delete Encounter</h1>
+</div>

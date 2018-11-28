@@ -1,44 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CombatantListComponent, EncounterListComponent, NewCombatantComponent, NewEncounterComponent } from './views';
+import { CombatantComponent, EncounterComponent } from './views';
 import { CombatantResolver, EncounterResolver } from './resolvers';
 
 const routes: Routes = [
   {
-    path: 'new/combatant',
-    component: NewCombatantComponent,
+    path: 'combatants',
+    component: CombatantComponent,
     data: {
-      title: 'New Combatant'
-    }//,
-    // resolve: {
-    //   ??
-    // }
-  },
-  {
-    path: 'new/encounter',
-    component: NewEncounterComponent,
-    data: {
-      title: 'New Encounter'
-    }//,
-    // resolve: {
-    //   ??
-    // }
-  },
-  {
-    path: 'list/combatants',
-    component: CombatantListComponent,
-    data: {
-      title: 'List Combatants'
+      title: 'Combatants'
     },
     resolve: {
       combatantList: CombatantResolver
     }
   },
   {
-    path: 'list/encounters',
-    component: EncounterListComponent,
+    path: 'encounters',
+    component: EncounterComponent,
     data: {
-      title: 'List Encounters'
+      title: 'Encounters'
     },
     resolve: {
       encounterList: EncounterResolver,

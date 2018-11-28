@@ -8,6 +8,8 @@ import { CombatantResolver, EncounterResolver } from './resolvers';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CombatantComponent } from './views/combatant/combatant.component';
+import { EncounterComponent } from './views/encounter/encounter.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EncounterListComponent,
     NewEncounterComponent,
     CombatantListComponent,
-    NewCombatantComponent
+    NewCombatantComponent,
+    CombatantComponent,
+    EncounterComponent
   ],
   imports: [
     BrowserModule,
