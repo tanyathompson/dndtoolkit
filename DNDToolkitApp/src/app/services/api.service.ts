@@ -39,4 +39,8 @@ export class API {
     console.log('addNewCombatant on ' + encounter.name)
     return this.http.post<EncounterModel>(this.ApiBaseUrl + 'new/encounter', encounter, this.httpOptions);
   }
+
+  deleteCombatant(id: String): Observable<[CombatantModel]> {
+    return this.http.delete<CombatantModel>(this.ApiBaseUrl + 'delete/combatant/' + id, this.httpOptions);
+  };
 }

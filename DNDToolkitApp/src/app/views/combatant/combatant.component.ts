@@ -12,6 +12,8 @@ import { API } from '../../services';
 export class CombatantComponent implements OnInit {
   combatantList : CombatantModel[];
   newCombatantForm : FormGroup;
+  deleteCombatantForm : FormGroup;
+  updateCombatantForm : FormGroup;
 
   constructor(private route: ActivatedRoute, private api: API) { }
 
@@ -26,6 +28,18 @@ export class CombatantComponent implements OnInit {
       hp: new FormControl(''),
       initiative: new FormControl('')
     });
+
+    this.deleteCombatantForm = new FormGroup({
+      id: new FormControl('')
+    });
+
+    this.updateCombatantForm = new FormGroup({
+      id: new FormControl(''),
+      name: new FormControl(''),
+      owner: new FormControl(''),
+      hp: new FormControl(''),
+      initiative: new FormControl('')
+    })
   }
 
   addNewCombatant() {
@@ -39,6 +53,10 @@ export class CombatantComponent implements OnInit {
     }
 
     this.api.addNewCombatant(combatant).subscribe(combatant => this.combatantList.push(combatant));
+  }
+
+  deleteCombatant() {
+    this.api.deleteCombatant(this.deleteCombatantForm.controls.id.value).subscribe(combatant => this.combatantList.pop(combatant));
   }
 
 

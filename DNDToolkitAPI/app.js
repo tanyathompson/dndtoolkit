@@ -33,6 +33,17 @@ app.use(cors());
 
 mongoose.connect(dbConfig.dbConnectionString);
 
+app.delete('/delete/combatant/:id', (req, res) => {
+  console.log('Delete Combatant Request: ' + req.params.id);
+  CombatantModel.findOneAndDelete({_id: req.params.id}, (err, combatant) => {
+    console.log('err: ' + err);
+    console.log('combatant: ' + combatant)
+    if (err) { res.json(err) }
+    res.json(combatant)
+    console.log('deleted id: ' + req.params.id)
+  });
+});
+
 app.post('/new/combatant', (req, res, next) => {
   console.log('New Combatant Request: ' + req.body.name);
   let newCombatant = new CombatantModel({
