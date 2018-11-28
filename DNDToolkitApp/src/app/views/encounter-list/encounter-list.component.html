@@ -7,7 +7,7 @@
   </tr>
   <tr *ngFor="let encounter of encounters">
     <td>{{encounter.name}}</td>
-    <td>{{encounter.prettyCombatants}}</td>
+    <td><p *ngFor="let combatant of encounter.prettyCombatants">{{combatant}}</p></td>
     <td>{{encounter._id}}</td>
   </tr>
 </table>
