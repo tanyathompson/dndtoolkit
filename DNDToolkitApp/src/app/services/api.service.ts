@@ -10,6 +10,12 @@ import { CombatantModel, EncounterModel } from '../models';
 
 export class API {
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
   constructor(private http: HttpClient) { }
 
   get ApiBaseUrl(): string {
@@ -22,5 +28,10 @@ export class API {
 
   getEncounters(): Observable<HttpResponse<EncounterModel[]>> {
     return this.http.get<EncounterModel[]>(this.ApiBaseUrl + 'list/encounters', { observe: 'response'});
+  }
+
+  addNewCombatant(combatant: CombatantModel): Observable<CombatantModel> {
+    console.log('addNewCombatant on ' + combatant.name)
+    return this.http.post<CombatantModel>(this.ApiBaseUrl + 'new/combatant', combatant, this.httpOptions);
   }
 }

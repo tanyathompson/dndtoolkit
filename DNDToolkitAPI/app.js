@@ -34,6 +34,7 @@ app.use(cors());
 mongoose.connect(dbConfig.dbConnectionString);
 
 app.post('/new/combatant', (req, res, next) => {
+  console.log('New Combatant Request: ' + req.body.name);
   let newCombatant = new CombatantModel({
     name: req.body.name,
     owner: req.body.owner,
@@ -48,6 +49,7 @@ app.post('/new/combatant', (req, res, next) => {
 });
 
 app.post('/new/encounter', (req, res, next) => {
+  console.log('New Encounter Request: ' + req);
   let newEncounter = new EncounterModel({
     name: req.body.name,
     combatants: req.body.combatants
