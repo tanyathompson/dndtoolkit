@@ -59,5 +59,22 @@ export class CombatantComponent implements OnInit {
     this.api.deleteCombatant(this.deleteCombatantForm.controls.id.value).subscribe(combatant => this.combatantList.pop(combatant));
   }
 
+  updateCombatant() {
+    let id : String = this.updateCombatantForm.controls.id.value;
+
+    let newCombatant : CombatantModel = {
+      name: this.updateCombatantForm.controls.name.value,
+      owner: this.updateCombatantForm.controls.owner.value,
+      hp: this.updateCombatantForm.controls.hp.value,
+      initiative: this.updateCombatantForm.controls.initiative.value,
+    }
+    this.api.updateCombatant(id, newCombatant).subscribe(oldCombatant => {
+      this.combatantList.pop(oldCombatant);
+      newCombatant._id = id;
+      this.combatantList.push(newCombatant);
+    });
+
+  }
+
 
 }

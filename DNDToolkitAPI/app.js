@@ -12,6 +12,8 @@ let EncounterModel = require('./models/encounter.js');
 
 let dbConfig = require('./configs/db.js');
 
+let util = require('util');
+
 // let indexRouter = require('./routes/index');
 // let usersRouter = require('./routes/users');
 
@@ -41,6 +43,23 @@ app.delete('/delete/combatant/:id', (req, res) => {
     if (err) { res.json(err) }
     res.json(combatant)
     console.log('deleted id: ' + req.params.id)
+  });
+});
+
+app.put('/update/combatant/:id', (req, res) => {
+  console.log('Update Combatant Request: ' + req.params.id);
+  console.log('Update Combatant Body: ' + req.body)
+  CombatantModel.findOneAndUpdate({_id: req.params.id}, {
+    name: req.body.name,
+    owner: req.body.owner,
+    hp: req.body.hp,
+    initiative: req.body.initiative
+  }, (err, oldCombatant) => {
+    console.log('err: ' + err);
+    console.log('combatant: ' + oldCombatant)
+    if (err) { res.json(err) }
+    res.json(oldCombatant)
+    console.log('updated id: ' + req.params.id)
   });
 });
 

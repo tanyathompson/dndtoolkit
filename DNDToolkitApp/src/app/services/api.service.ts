@@ -43,4 +43,8 @@ export class API {
   deleteCombatant(id: String): Observable<[CombatantModel]> {
     return this.http.delete<CombatantModel>(this.ApiBaseUrl + 'delete/combatant/' + id, this.httpOptions);
   };
+
+  updateCombatant(id: String, newCombatant: CombatantModel): Observable<[CombatantModel]> {
+    return this.http.put<CombatantModel>(this.ApiBaseUrl + 'update/combatant/' + id, newCombatant);
+  }
 }
