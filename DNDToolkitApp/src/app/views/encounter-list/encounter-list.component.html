@@ -1,3 +1,13 @@
-<p>
-  encounter-list works!
-</p>
+<br >
+<table class="table">
+  <tr>
+    <td>Name</td>
+    <td>Combatants</td>
+    <td>ID</td>
+  </tr>
+  <tr *ngFor="let encounter of encounters">
+    <td>{{encounter.name}}</td>
+    <td>{{encounter.prettyCombatants}}</td>
+    <td>{{encounter._id}}</td>
+  </tr>
+</table>

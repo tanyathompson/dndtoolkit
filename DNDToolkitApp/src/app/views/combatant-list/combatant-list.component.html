@@ -1,3 +1,17 @@
-<p>
-  combatant-list works!
-</p>
+<br >
+<table class="table">
+  <tr>
+    <td>Name</td>
+    <td>Owner</td>
+    <td>Hit Points</td>
+    <td>Initiative</td>
+    <td>ID</td>
+  </tr>
+  <tr *ngFor="let combatant of combatants">
+    <td>{{combatant.name}}</td>
+    <td>{{combatant.owner}}</td>
+    <td>{{combatant.hp}}</td>
+    <td>{{combatant.initiative}}</td>
+    <td>{{combatant._id}}</td>
+  </tr>
+</table>

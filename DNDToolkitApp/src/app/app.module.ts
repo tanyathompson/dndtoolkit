@@ -3,10 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EncounterListComponent } from './encounter-list/encounter-list.component';
-import { NewEncounterComponent } from './new-encounter/new-encounter.component';
-import { CombatantListComponent } from './combatant-list/combatant-list.component';
-import { NewCombatantComponent } from './new-combatant/new-combatant.component';
+import { CombatantListComponent, EncounterListComponent, NewCombatantComponent, NewEncounterComponent } from './views';
+import { CombatantResolver, EncounterResolver } from './resolvers';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -18,9 +17,10 @@ import { NewCombatantComponent } from './new-combatant/new-combatant.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CombatantResolver, EncounterResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
