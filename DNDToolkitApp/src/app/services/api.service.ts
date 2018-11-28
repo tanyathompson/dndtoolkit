@@ -34,4 +34,9 @@ export class API {
     console.log('addNewCombatant on ' + combatant.name)
     return this.http.post<CombatantModel>(this.ApiBaseUrl + 'new/combatant', combatant, this.httpOptions);
   }
+
+  addNewEncounter(encounter: EncounterModel): Observable<EncounterModel> {
+    console.log('addNewCombatant on ' + encounter.name)
+    return this.http.post<EncounterModel>(this.ApiBaseUrl + 'new/encounter', encounter, this.httpOptions);
+  }
 }

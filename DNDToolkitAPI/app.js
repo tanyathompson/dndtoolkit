@@ -49,7 +49,7 @@ app.post('/new/combatant', (req, res, next) => {
 });
 
 app.post('/new/encounter', (req, res, next) => {
-  console.log('New Encounter Request: ' + req);
+  console.log('New Encounter Request: ' + req.body.name);
   let newEncounter = new EncounterModel({
     name: req.body.name,
     combatants: req.body.combatants

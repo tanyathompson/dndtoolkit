@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { CombatantModel } from '../../models'
-import { API } from '../../services'
+import { CombatantModel } from '../../models';
+import { API } from '../../services';
 
 @Component({
   selector: 'app-new-combatant',
