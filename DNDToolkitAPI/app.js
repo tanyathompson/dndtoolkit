@@ -35,6 +35,32 @@ app.use(cors());
 
 mongoose.connect(dbConfig.dbConnectionString);
 
+app.delete('/delete/encounter/:id', (req, res) => {
+  console.log('Delete Encounter Request: ' + req.params.id);
+  EncounterModel.findOneAndDelete({_id: req.params.id}, (err, encounter) => {
+    console.log('err: ' + err);
+    console.log('encounter: ' + encounter)
+    if (err) { res.json(err) }
+    res.json(encounter)
+    console.log('deleted id: ' + req.params.id)
+  });
+});
+
+app.put('/update/encounter/:id', (req, res) => {
+  console.log('Update Encounter Request: ' + req.params.id);
+  console.log('Update Encounter Body: ' + req.body)
+  EncounterModel.findOneAndUpdate({_id: req.params.id}, {
+    name: req.body.name,
+    combatants: req.body.combatants
+  }, (err, oldEncounter) => {
+    console.log('err: ' + err);
+    console.log('encounter: ' + oldEncounter)
+    if (err) { res.json(err) }
+    res.json(oldEncounter)
+    console.log('updated id: ' + req.params.id)
+  });
+});
+
 app.delete('/delete/combatant/:id', (req, res) => {
   console.log('Delete Combatant Request: ' + req.params.id);
   CombatantModel.findOneAndDelete({_id: req.params.id}, (err, combatant) => {

@@ -25,8 +25,18 @@
 
 <div>
   <h1>Update Encounter</h1>
+  <form [formGroup]="updateEncounterForm" (ngSubmit)="updateEncounter()">
+    ID: <input formControlName="id" type="text">
+    Name: <input formControlName="name" type="text">
+    Combatants: <input formControlName="combatants" type="text">
+    Submit: <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
 
 <div>
   <h1>Delete Encounter</h1>
+  <form [formGroup]="deleteEncounterForm" (ngSubmit)="deleteEncounter()">
+    ID: <input formControlName="id" type="text">
+    Submit: <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>

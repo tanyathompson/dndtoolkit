@@ -11,6 +11,8 @@ import { API } from '../../services';
 })
 export class EncounterComponent implements OnInit {
   newEncounterForm : FormGroup;
+  deleteEncounterForm : FormGroup;
+  updateEncounterForm : FormGroup;
   encounterList : any;
 
   constructor(private route: ActivatedRoute, private api: API) { }
@@ -36,6 +38,17 @@ export class EncounterComponent implements OnInit {
       name: new FormControl(''),
       combatants: new FormControl('')
     });
+
+    this.deleteEncounterForm = new FormGroup({
+      id: new FormControl('')
+    });
+
+    this.updateEncounterForm = new FormGroup({
+      id: new FormControl(''),
+      name: new FormControl(''),
+      combatants: new FormControl('')
+    });
+
   }
 
   addNewEncounter() {
@@ -50,4 +63,28 @@ export class EncounterComponent implements OnInit {
     }
     this.api.addNewEncounter(encounter).subscribe(encounter => this.encounterList.push(encounter));
   }
+
+  deleteEncounter() {
+    this.api.deleteEncounter(this.deleteEncounterForm.controls.id.value).subscribe(encounter => this.encounterList.pop(encounter));
+  }
+
+  updateEncounter() {
+    let id : String = this.updateEncounterForm.controls.id.value;
+
+    let newEncounter : EncounterModel = {
+      name: this.updateEncounterForm.controls.name.value,
+      combatants: this.updateEncounterForm.controls.combatants.value.split(',')
+    }
+    console.log(newEncounter);
+
+    this.api.updateEncounter(id, newEncounter).subscribe(oldEncounter => {
+      console.log(oldEncounter);
+      this.encounterList.pop(oldEncounter);
+      newEncounter._id = id;
+      console.log(newEncounter);
+      this.encounterList.push(newEncounter);
+    });
+
+  }
+
 }
