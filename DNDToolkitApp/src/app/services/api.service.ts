@@ -40,19 +40,19 @@ export class API {
     return this.http.post<EncounterModel>(this.ApiBaseUrl + 'new/encounter', encounter, this.httpOptions);
   }
 
-  deleteCombatant(id: String): Observable<[CombatantModel]> {
+  deleteCombatant(id: String): Observable<CombatantModel> {
     return this.http.delete<CombatantModel>(this.ApiBaseUrl + 'delete/combatant/' + id, this.httpOptions);
   };
 
-  updateCombatant(id: String, newCombatant: CombatantModel): Observable<[CombatantModel]> {
+  updateCombatant(id: String, newCombatant: CombatantModel): Observable<CombatantModel> {
     return this.http.put<CombatantModel>(this.ApiBaseUrl + 'update/combatant/' + id, newCombatant);
   }
 
-  deleteEncounter(id: String): Observable<[EncounterModel]> {
+  deleteEncounter(id: String): Observable<EncounterModel> {
     return this.http.delete<EncounterModel>(this.ApiBaseUrl + 'delete/encounter/' + id, this.httpOptions);
   };
 
-  updateEncounter(id: String, newEncounter: EncounterModel): Observable<[EncounterModel]> {
+  updateEncounter(id: String, newEncounter: EncounterModel): Observable<EncounterModel> {
     return this.http.put<EncounterModel>(this.ApiBaseUrl + 'update/encounter/' + id, newEncounter);
   }
 }

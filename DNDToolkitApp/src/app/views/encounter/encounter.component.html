@@ -1,42 +1,44 @@
-<div>
-  <h1>Create Encounter</h1>
-  <form [formGroup]="newEncounterForm" (ngSubmit)="addNewEncounter()">
-    Name: <input formControlName="name" type="text">
-    Combatants: <input formControlName="combatants" type="text">
-    Submit: <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+<div class="container">
+  <div>
+    <h1>Create Encounter</h1>
+    <form [formGroup]="newEncounterForm" (ngSubmit)="addNewEncounter()">
+      <label>Name</label><input class="form-control" formControlName="name" type="text">
+      <label>Combatants</label><input class="form-control" formControlName="combatants" type="text">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 
-<div>
-  <h1>List Encounters</h1>
-  <table class="table">
-    <tr>
-      <td>Name</td>
-      <td>Combatants</td>
-      <td>ID</td>
-    </tr>
-    <tr *ngFor="let encounter of encounterList">
-      <td>{{encounter.name}}</td>
-      <td><p *ngFor="let combatant of encounter.prettyCombatants">{{combatant}}</p></td>
-      <td>{{encounter._id}}</td>
-    </tr>
-  </table>
-</div>
+  <div>
+    <h1>List Encounters</h1>
+    <table class="table">
+      <tr>
+        <td>Name</td>
+        <td>Combatants</td>
+        <td>ID</td>
+      </tr>
+      <tr *ngFor="let encounter of encounterList" routerLink="initiative/{{encounter._id}}">
+        <td>{{encounter.name}}</td>
+        <td><p *ngFor="let combatant of encounter.prettyCombatants">{{combatant}}</p></td>
+        <td>{{encounter._id}}</td>
+      </tr>
+    </table>
+  </div>
 
-<div>
-  <h1>Update Encounter</h1>
-  <form [formGroup]="updateEncounterForm" (ngSubmit)="updateEncounter()">
-    ID: <input formControlName="id" type="text">
-    Name: <input formControlName="name" type="text">
-    Combatants: <input formControlName="combatants" type="text">
-    Submit: <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+  <div>
+    <h1>Update Encounter</h1>
+    <form [formGroup]="updateEncounterForm" (ngSubmit)="updateEncounter()">
+      ID: <input class="form-control" formControlName="id" type="text">
+      Name: <input class="form-control" formControlName="name" type="text">
+      Combatants: <input class="form-control" formControlName="combatants" type="text">
+      Submit: <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 
-<div>
-  <h1>Delete Encounter</h1>
-  <form [formGroup]="deleteEncounterForm" (ngSubmit)="deleteEncounter()">
-    ID: <input formControlName="id" type="text">
-    Submit: <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  <div>
+    <h1>Delete Encounter</h1>
+    <form [formGroup]="deleteEncounterForm" (ngSubmit)="deleteEncounter()">
+      ID: <input class="form-control" formControlName="id" type="text">
+      Submit: <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>
