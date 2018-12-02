@@ -58,6 +58,7 @@ export class EncounterComponent implements OnInit {
     let combatantList = rawCombatants.split(',');
 
     let encounter : EncounterModel = {
+      _id: null,
       name: this.newEncounterForm.controls.name.value,
       combatants: combatantList
     }
@@ -65,23 +66,21 @@ export class EncounterComponent implements OnInit {
   }
 
   deleteEncounter() {
-    this.api.deleteEncounter(this.deleteEncounterForm.controls.id.value).subscribe(encounter => this.encounterList.pop(encounter));
+    this.api.deleteEncounter(this.deleteEncounterForm.controls.id.value).subscribe(encounter => this.encounterList.splice(this.encounterList.indexOf(encounter),1));
   }
 
   updateEncounter() {
     let id : String = this.updateEncounterForm.controls.id.value;
 
     let newEncounter : EncounterModel = {
+      _id: id,
       name: this.updateEncounterForm.controls.name.value,
       combatants: this.updateEncounterForm.controls.combatants.value.split(',')
     }
     console.log(newEncounter);
 
     this.api.updateEncounter(id, newEncounter).subscribe(oldEncounter => {
-      console.log(oldEncounter);
-      this.encounterList.pop(oldEncounter);
-      newEncounter._id = id;
-      console.log(newEncounter);
+      this.encounterList.splice(this.encounterList.indexOf(oldEncounter),1);
       this.encounterList.push(newEncounter);
     });
 

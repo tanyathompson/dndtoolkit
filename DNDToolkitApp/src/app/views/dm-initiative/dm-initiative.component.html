@@ -1,3 +1,15 @@
-<p>
-  dm-initiative works!
-</p>
+<div class="container pt-3">
+  <h1>Waiting for Players...</h1>
+  <table class="table">
+    <tr>
+      <td>Player</td>
+      <td>Connected</td>
+    </tr>
+    <tr *ngFor="let combatant of combatants">
+      <td>{{combatant.id}}</td><td>{{combatant.connected}}</td>
+    </tr>
+    <tr>{{allPlayersConnected}}</tr>
+  </table>
+  <button class="btn btn-outline-primary btn-block" [ngClass]="allPlayersConnected ? 'enabled' : 'disabled'">Roll Initiative!</button>
+</div>
+

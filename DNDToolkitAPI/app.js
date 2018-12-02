@@ -131,6 +131,13 @@ app.get('/list/encounters', (req, res, next) => {
   });
 });
 
+app.get('/read/encounter/:id', (req, res, next) => {
+  EncounterModel.findOne({_id: req.params.id}, (err, result) => {
+    if (err) { console.log(err) }
+    else { res.json(result) }
+  });
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

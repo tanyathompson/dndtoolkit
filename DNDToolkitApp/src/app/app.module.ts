@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CombatantResolver, EncounterResolver } from './resolvers';
+import { CombatantResolver, EncounterResolver, EncounterByIdResolver } from './resolvers';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,7 +30,7 @@ import { PlayerInitiativeComponent } from './views/player-initiative/player-init
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [CombatantResolver, EncounterResolver],
+  providers: [CombatantResolver, EncounterResolver, EncounterByIdResolver],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

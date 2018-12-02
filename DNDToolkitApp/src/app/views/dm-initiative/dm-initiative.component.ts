@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EncounterModel, CombatantModel } from '../../models';
+import { ActivatedRoute } from '@angular/router';
+import { SocketService } from '../../services';
 
 @Component({
   selector: 'app-dm-initiative',
@@ -7,9 +10,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DmInitiativeComponent implements OnInit {
 
-  constructor() { }
+  encounter : EncounterModel;
+  socket : SocketService = new SocketService();
+  combatants : {
+    id: String,
+    name: String,
+    connected: Boolean,
+    myTurn: Boolean;
+  }[];
+  allPlayersConnected : Boolean = false;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.encounter = this.route.snapshot.data.encounter.body;
+    this.combatants = [];
+
+    this.encounter.combatants.forEach(element => {
+      this.combatants.push({
+        id: element,
+        name: 'Unknown',
+        myTurn: false,
+        connected: false
+      })
+    });
+    
+    this.socket.connectDM(this.encounter._id);
+
+    this.socket.onPlayerConnect().subscribe(playerId => {
+      console.log('player connected: ' + playerId)
+      this.combatants.forEach(element => {
+        if (element.id === playerId) { element.connected = true };
+      });
+      this.updateConnectionStatus();
+    });
+  }
+
+  updateConnectionStatus() {
+    let status = true;
+    this.combatants.forEach(element => {
+      if (!element.connected) { status = false; }
+    });
+    this.allPlayersConnected = status;
   }
 
 }

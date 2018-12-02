@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CombatantComponent, EncounterComponent } from './views';
-import { CombatantResolver, EncounterResolver } from './resolvers';
+import { CombatantResolver, EncounterResolver, EncounterByIdResolver } from './resolvers';
 import { DefaultComponent } from './views/default/default.component';
 import { DmDashboardComponent } from './views/dm-dashboard/dm-dashboard.component';
 import { DmInitiativeComponent } from './views/dm-initiative/dm-initiative.component';
@@ -48,10 +48,12 @@ const routes: Routes = [
     component: DmInitiativeComponent,
     data: {
       title: 'DM Initiative'
+    }, resolve: {
+      encounter: EncounterByIdResolver
     }
   },
   {
-    path: 'initiative',
+    path: 'player/:id',
     component: PlayerInitiativeComponent,
     data: {
       title: 'Initiative'

@@ -6,27 +6,21 @@ let cors = require('cors');
 
 express.use(cors());
 
-let connectedSockets = []
-
 io.on('connection', function(socket) {
-    connectedSockets.push(socket);
     let connectionId = Math.floor(Math.random() * 99999);
     console.log('Connect Initiated, connectionId: ' + connectionId);
 
-    socket.on('hi', function(id) {
-        let oldConnectionId = connectionId;
-        connectionId = id;
-        console.log("connectionId updated from " + oldConnectionId + " to " + connectionId);
-
-        socket.join(connectionId);
-        console.log('Joined room: ' + connectionId);
-
-        socket.on('test', function(message) {
-            console.log('Received message ' + message + ' in room ' + connectionId);
-        })
+    socket.on('newRoom', roomId => {
+        socket.join(roomId);
+        console.log("Joined room: " + roomId);
     })
 
-    socket.on('disconnect', function() {
+    socket.on('newPlayer', playerId => {
+        console.log('new player: ' + playerId)
+        socket.broadcast.emit('playerConnected', playerId);
+    });
+
+    socket.on('disconnect', () => {
         console.log('Disconnect Initiated, connectionId: ' + connectionId);
     });
 });
@@ -34,11 +28,3 @@ io.on('connection', function(socket) {
 server.listen(5000, function(){
     console.log('listening on *:5000');
 });
-
-setInterval(function() {
-    console.log('Connected sockets: ' + connectedSockets);
-}, 3000);
-
-while(true) {
-    console.log('game loop');
-}

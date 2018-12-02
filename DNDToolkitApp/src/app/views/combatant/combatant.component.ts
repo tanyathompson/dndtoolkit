@@ -46,6 +46,7 @@ export class CombatantComponent implements OnInit {
     console.log(this.newCombatantForm)
 
     let combatant : CombatantModel = {
+      _id: null,
       name: this.newCombatantForm.controls.name.value,
       owner: this.newCombatantForm.controls.owner.value,
       hp: this.newCombatantForm.controls.hp.value,
@@ -56,21 +57,21 @@ export class CombatantComponent implements OnInit {
   }
 
   deleteCombatant() {
-    this.api.deleteCombatant(this.deleteCombatantForm.controls.id.value).subscribe(combatant => this.combatantList.pop(combatant));
+    this.api.deleteCombatant(this.deleteCombatantForm.controls.id.value).subscribe(combatant => this.combatantList.splice(this.combatantList.indexOf(combatant),1));
   }
 
   updateCombatant() {
     let id : String = this.updateCombatantForm.controls.id.value;
 
     let newCombatant : CombatantModel = {
+      _id: id,
       name: this.updateCombatantForm.controls.name.value,
       owner: this.updateCombatantForm.controls.owner.value,
       hp: this.updateCombatantForm.controls.hp.value,
       initiative: this.updateCombatantForm.controls.initiative.value,
     }
     this.api.updateCombatant(id, newCombatant).subscribe(oldCombatant => {
-      this.combatantList.pop(oldCombatant);
-      newCombatant._id = id;
+      this.combatantList.splice(this.combatantList.indexOf(oldCombatant), 1);
       this.combatantList.push(newCombatant);
     });
 

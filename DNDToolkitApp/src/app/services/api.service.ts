@@ -30,6 +30,10 @@ export class API {
     return this.http.get<EncounterModel[]>(this.ApiBaseUrl + 'list/encounters', { observe: 'response'});
   }
 
+  getEncounterById(id : String): Observable<HttpResponse<EncounterModel>> {
+    return this.http.get<EncounterModel>(this.ApiBaseUrl + 'read/encounter/' + id, { observe: 'response'});
+  }
+
   addNewCombatant(combatant: CombatantModel): Observable<CombatantModel> {
     console.log('addNewCombatant on ' + combatant.name)
     return this.http.post<CombatantModel>(this.ApiBaseUrl + 'new/combatant', combatant, this.httpOptions);
