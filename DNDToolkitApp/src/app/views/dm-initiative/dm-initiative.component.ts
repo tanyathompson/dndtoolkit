@@ -35,7 +35,7 @@ export class DmInitiativeComponent implements OnInit {
       })
     });
     
-    this.socket.connectDM(this.encounter._id);
+    this.socket.connectDM(this.encounter._id, this.combatants);
 
     this.socket.onPlayerConnect().subscribe(playerId => {
       console.log('player connected: ' + playerId)
@@ -43,6 +43,10 @@ export class DmInitiativeComponent implements OnInit {
         if (element.id === playerId) { element.connected = true };
       });
       this.updateConnectionStatus();
+    });
+
+    this.socket.onRollInitiative().subscribe( () => {
+      console.log('need to roll initiative!');
     });
   }
 
@@ -52,6 +56,10 @@ export class DmInitiativeComponent implements OnInit {
       if (!element.connected) { status = false; }
     });
     this.allPlayersConnected = status;
+  }
+
+  rollInitiative() {
+    this.socket.rollInitiative();
   }
 
 }

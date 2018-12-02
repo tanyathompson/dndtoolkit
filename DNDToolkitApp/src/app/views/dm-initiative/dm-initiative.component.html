@@ -10,6 +10,6 @@
     </tr>
     <tr>{{allPlayersConnected}}</tr>
   </table>
-  <button class="btn btn-outline-primary btn-block" [ngClass]="allPlayersConnected ? 'enabled' : 'disabled'">Roll Initiative!</button>
+  <button class="btn btn-outline-primary btn-block" [ngClass]="allPlayersConnected ? 'enabled' : 'disabled'" (click)="rollInitiative()">Roll Initiative!</button>
 </div>
 
