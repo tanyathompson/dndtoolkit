@@ -22,7 +22,6 @@ io.on('connection', socket => {
     });
 });
 
-
 server.listen(5000, () => {
     console.log('Controller initialized and listening on *:5000');
 });
