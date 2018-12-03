@@ -20,6 +20,11 @@ io.on('connection', socket => {
         socket.join(room);
         io.to(room).emit('playerJoinedRoom', id);
     });
+
+    socket.on('disconnect', () => {
+        socket.leave(room);
+        console.log('Socket: ' + socket.id + ' disconnected');
+    });
 });
 
 server.listen(5000, () => {
