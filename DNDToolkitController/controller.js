@@ -1,4 +1,3 @@
-//imports
 let express = require('express')();
 let server = require('http').Server(express);
 let io = require('socket.io')(server);
