@@ -34,14 +34,11 @@ export class PlayerViewComponent implements OnInit {
     this.connectToDMForm = new FormGroup({
       room: new FormControl('')
     })
-
-    this.subscriptions.push(this.socket.onInvite().subscribe( () => {
-      this.connectedToDM = true;
-    }))
   }
 
   connect() {
     this.socket.connect(this.connectToDMForm.controls.room.value);
+    this.socket.playerConnected(this.me);
     this.connectedToDM = true;
   }
 

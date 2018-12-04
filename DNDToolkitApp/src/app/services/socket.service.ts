@@ -16,7 +16,15 @@ export class SocketService {
     this.socket = io(environment.controller_url, {query: 'room=' + room});
   }
 
-  onInvite() : Observable<any> {
-    return 
+  playerConnected(player) {
+    this.socket.emit('playerConnected', player)
+  }
+
+  onPlayerConnect() : Observable<any> {
+    return new Observable<any>(observer => {
+      this.socket.on('playerConnected', (player : any) => {
+        observer.next(player);
+      })
+    });
   }
 }

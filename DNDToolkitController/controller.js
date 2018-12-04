@@ -18,7 +18,10 @@ io.on('connection', socket => {
         room = newRoom;
         console.log('Socket ' + socket.id + ' joining room ' + room);
         socket.join(room);
-        io.to(room).emit('playerJoinedRoom', id);
+    });
+
+    socket.on('playerConnected', player => {
+        io.to(room).emit("playerConnected", player);
     });
 
     socket.on('disconnect', () => {

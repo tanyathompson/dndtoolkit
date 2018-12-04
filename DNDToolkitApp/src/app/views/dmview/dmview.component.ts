@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SocketService, HttpService } from 'src/app/services';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { SocketService } from 'src/app/services';
 import { Subscription } from 'rxjs';
 import { CombatantModel } from 'src/app/models';
-import { ComponentFactoryBoundToModule } from '@angular/core/src/linker/component_factory_resolver';
 
 @Component({
   selector: 'app-dmview',
@@ -12,17 +11,20 @@ import { ComponentFactoryBoundToModule } from '@angular/core/src/linker/componen
 export class DMViewComponent implements OnInit, OnDestroy {
 
   subscriptions : Subscription[] = [];
-  room : String = "dummy";
-  combatants : CombatantModel[] = []; 
+  room : String;
+  combatants : any[] = []; 
 
-  constructor(private http : HttpService, private socket : SocketService) { }
+  constructor(private socket : SocketService) { }
 
   ngOnInit() {
+    this.room = sessionStorage.getItem('dmkey');
+
     this.socket.connect(this.room);
 
-    // this.subscriptions.push(this.http.getSimplePassword().subscribe(room => {
-    //   this.room = room;
-    // }));
+    this.subscriptions.push(this.socket.onPlayerConnect().subscribe(player => {
+      this.combatants.push(player);
+      console.log(this.combatants);
+    }));
   }
 
   ngOnDestroy() {

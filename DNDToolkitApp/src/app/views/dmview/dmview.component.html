@@ -1,3 +1,13 @@
-<p>
-  dmview works!
-</p>
+<div class="container pt-3">
+  <div class="container">
+      <h3>DM Room Code: {{room}}</h3>
+  </div>
+  <div class="container mt-3">
+    <h3>Connected Players: </h3>
+    <div class="container" *ngFor="let combatant of combatants">
+      <p>{{combatant._name}}</p>
+    </div> 
+  </div>
+
+
+</div>

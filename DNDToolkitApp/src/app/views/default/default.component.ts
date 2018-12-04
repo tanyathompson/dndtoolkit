@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpService } from 'src/app/services';
 
 @Component({
   selector: 'app-default',
@@ -7,9 +8,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class DefaultComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(private http : HttpService) { }
 
   ngOnInit() {
+    sessionStorage.setItem('dmkey', 'default_dmkey')
+
+    this.http.getSimplePassword().subscribe(dmKey => {
+      sessionStorage.setItem('dmkey', dmKey);
+    })
 
   }
 
