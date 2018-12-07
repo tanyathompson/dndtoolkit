@@ -1,18 +1,41 @@
 <div class="container pt-3">
-  <div class="container">
-    <form [formGroup]="playerDataForm" (ngSubmit)="updateMe()">
-      <div class="form-group"><label>Name</label><input formControlName="name" type="text"></div> 
-      <div class="form-group"><label>Character Name</label><input formControlName="characterName" type="text"></div>
-      <div class="form-group"><label>Initiative Bonus</label><input formControlName="initiativeBonus" type="number"></div>
-      <div class="form-group"><label>Current HP</label><input formControlName="currentHitPoints" type="number"></div>
-      <div class="form-group"><label>Max HP</label><input formControlName="maximumHitPoints" type="number"></div>
-      <div class="form-group"><button type="submit" class="btn btn-outline-primary btn-block">Submit</button></div>
-      </form>
-  </div>
-  <div class="container" *ngIf="!connectedToDM">
+  <h1>Player Info</h1>
+  <form [formGroup]="playerDataForm" (ngSubmit)="updateMe()">
+    <div class="form-group">
+      <label>Name</label>
+      <input formControlName="name" class="form-control" type="text" placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label>Character Name</label>
+      <input formControlName="characterName" class="form-control" type="text" placeholder="Character name">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-4">
+        <label>Initiative Bonus</label>
+        <input formControlName="initiativeBonus" class="form-control" type="number" placeholder="Initiative bonus">
+      </div>
+      <div class="form-group col-sm-4">
+        <label>Current HP</label>
+        <input formControlName="currentHitPoints" class="form-control" type="number" placeholder="Current hit points">
+      </div>
+      <div class="form-group col-sm-4">
+        <label>Max HP</label>
+        <input formControlName="maximumHitPoints" class="form-control" type="number" placeholder="Max hit points">
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-outline-primary btn-block">Submit</button></div>
+    </form>
+  <hr>
+  <div *ngIf="!connectedToDM">
     <form [formGroup]="connectToDMForm" (ngSubmit)="connect()">
-        <div class="form-group"><label>DM Room Code</label><input formControlName="room" type="text"></div>
-        <div class="form-group"><button class="btn btn-outline-primary btn-block">Connect to DM</button></div>
+        <div class="form-group">
+          <label>DM Room Code</label>
+          <input formControlName="room" type="text" class="form-control" placeholder="Room code">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-outline-primary btn-block">Connect to DM</button>
+        </div>
     </form>
   </div>
 </div>
