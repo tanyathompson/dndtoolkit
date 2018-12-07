@@ -1,0 +1,1 @@
+export { SecretResolver } from './secret.resolver'

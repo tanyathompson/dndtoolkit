@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent, DMViewComponent, PlayerViewComponent } from './views';
+import { SecretResolver } from './resolvers';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
     component: DMViewComponent,
     data: {
       title: 'DM View'
+    }, 
+    resolve: {
+      room: SecretResolver
     }
   },
   {

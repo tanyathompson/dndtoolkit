@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { SocketService } from 'src/app/services';
 import { Subscription } from 'rxjs';
 import { CombatantModel } from 'src/app/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dmview',
@@ -14,10 +15,11 @@ export class DMViewComponent implements OnInit, OnDestroy {
   room : String;
   combatants : any[] = []; 
 
-  constructor(private socket : SocketService) { }
+  constructor(private socket : SocketService, private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.room = sessionStorage.getItem('dmkey');
+    this.room = this.route.snapshot.data.room;
+    console.log(this.route);
 
     this.socket.connect(this.room);
 

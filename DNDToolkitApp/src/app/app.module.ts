@@ -7,6 +7,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DefaultComponent, DMViewComponent, PlayerViewComponent } from './views';
+import { SecretResolver } from './resolvers';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { DefaultComponent, DMViewComponent, PlayerViewComponent } from './views'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [SecretResolver],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
