@@ -1,6 +1,6 @@
 export class CombatantModel {
     private _id: String;
-    private _name: String;
+    private _combatantName: String;
     private _initiative: Number;
     private _initiativeBonus: Number;
     private _maximumHitPoints: Number;
@@ -10,7 +10,7 @@ export class CombatantModel {
 
     constructor() {
         this.id = "";
-        this.name = "";
+        this.combatantName = "";
         this.initiative = 0;
         this.initiativeBonus = 0;
         this.maximumHitPoints = 0;
@@ -25,11 +25,11 @@ export class CombatantModel {
         this._id = value;
     }
 
-    public get name(): String {
-        return this._name;
+    public get combatantName(): String {
+        return this._combatantName;
     }
-    public set name(value: String) {
-        this._name = value;
+    public set combatantName(value: String) {
+        this._combatantName = value;
     }
 
     public get initiative(): Number {

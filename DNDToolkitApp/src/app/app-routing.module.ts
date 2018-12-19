@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DefaultComponent, DMViewComponent, PlayerViewComponent } from './views';
+import { DefaultComponent, DMLandingPageComponent, PlayerLandingPageComponent, DMEncounterComponent, PlayerEncounterComponent } from './views';
 import { SecretResolver } from './resolvers';
 
 const routes: Routes = [
@@ -13,19 +13,33 @@ const routes: Routes = [
   },
   {
     path: 'dm',
-    component: DMViewComponent,
+    component: DMLandingPageComponent,
     data: {
-      title: 'DM View'
+      title: 'DM Landing Page'
     }, 
     resolve: {
       room: SecretResolver
     }
   },
   {
-    path: 'player',
-    component: PlayerViewComponent,
+    path: 'dm/encounter',
+    component: DMEncounterComponent,
     data: {
-      title: 'Player View'
+      title: 'DM Encounter'
+    }
+  },
+  {
+    path: 'player',
+    component: PlayerLandingPageComponent,
+    data: {
+      title: 'Player Landing Page'
+    }
+  },
+  {
+    path: 'player/encounter',
+    component: PlayerEncounterComponent,
+    data: {
+      title: 'Player Encounter'
     }
   }
 ];
