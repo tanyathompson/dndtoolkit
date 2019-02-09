@@ -6,21 +6,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DefaultComponent } from './views';
-import { SecretResolver } from './resolvers';
-import { DMEncounterComponent } from './views/dmencounter/dmencounter.component';
-import { PlayerEncounterComponent } from './views/player-encounter/player-encounter.component';
-import { DMLandingPageComponent } from './views/dmlanding-page/dmlanding-page.component';
-import { PlayerLandingPageComponent } from './views/player-landing-page/player-landing-page.component';
+import { DefaultComponent, DMViewComponent, PlayerViewComponent } from './views';
+import { LoginComponent } from './views/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DefaultComponent,
-    DMEncounterComponent,
-    PlayerEncounterComponent,
-    DMLandingPageComponent,
-    PlayerLandingPageComponent
+    DMViewComponent,
+    PlayerViewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
