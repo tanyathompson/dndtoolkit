@@ -7,13 +7,15 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DefaultComponent, DMViewComponent, PlayerViewComponent } from './views';
+import { LoginComponent } from './views/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DefaultComponent,
     DMViewComponent,
-    PlayerViewComponent
+    PlayerViewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
