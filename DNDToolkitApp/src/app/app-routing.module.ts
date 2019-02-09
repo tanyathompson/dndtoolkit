@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DefaultComponent, DMLandingPageComponent, PlayerLandingPageComponent, DMEncounterComponent, PlayerEncounterComponent } from './views';
-import { SecretResolver } from './resolvers';
+import { DefaultComponent, DMViewComponent, PlayerViewComponent, LoginComponent } from './views';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: DefaultComponent,
     data: {
       title: 'DNDToolkitApp'
     }
+  },
+  {
+    path:'',
+    component: LoginComponent
   },
   {
     path: 'dm',
