@@ -6,12 +6,12 @@ import { PlayerModel, MonsterModel, MonsterGroupModel } from 'src/app/models';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-dmview',
-  templateUrl: './dmview.component.html',
-  styleUrls: ['./dmview.component.css']
+  selector: 'app-dmlanding-page',
+  templateUrl: './dmlanding-page.component.html',
+  styleUrls: ['./dmlanding-page.component.css']
 })
-export class DMViewComponent implements OnInit, OnDestroy {
 
+export class DMLandingPageComponent implements OnInit {
   subscriptions : Subscription[] = [];
   addMonsterForm : FormGroup;
   room : String;

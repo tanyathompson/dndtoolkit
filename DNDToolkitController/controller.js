@@ -21,8 +21,16 @@ io.on('connection', socket => {
     });
 
     socket.on('playerConnected', player => {
-        io.to(room).emit("playerConnected", player);
+        io.to(room).emit('playerConnected', player);
     });
+
+    socket.on('beginCombat', () => {
+        io.to(room).emit('beginCombat');
+    })
+
+    socket.on('hello', () => {
+        console.log('Socket hello: ' + socket.id);
+    })
 
     socket.on('disconnect', () => {
         socket.leave(room);

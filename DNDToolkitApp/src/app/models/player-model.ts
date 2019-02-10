@@ -1,12 +1,12 @@
 import { CombatantModel } from './combatant-model';
 
 export class PlayerModel extends CombatantModel {
-    private _characterName: String;
+    private _playerName: String;
     
-    public get characterName(): String {
-        return this._characterName;
+    public get playerName(): String {
+        return this._playerName;
     }
-    public set characterName(value: String) {
-        this._characterName = value;
+    public set playerName(value: String) {
+        this._playerName = value;
     }
 }

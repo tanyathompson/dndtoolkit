@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpService, SocketService } from '../../services';
 import { Subscription } from 'rxjs';
 import { PlayerModel } from 'src/app/models';
 import { Router } from '@angular/router';
+import { SocketSharingService } from 'src/app/services/socket-sharing.service';
 
 @Component({
-  selector: 'app-player-view',
-  templateUrl: './player-view.component.html',
-  styleUrls: ['./player-view.component.css']
+  selector: 'app-player-landing-page',
+  templateUrl: './player-landing-page.component.html',
+  styleUrls: ['./player-landing-page.component.css']
 })
-export class PlayerViewComponent implements OnInit {
+
+export class PlayerLandingPageComponent implements OnInit {
 
   subscriptions : Subscription[] = [];
   playerDataForm : FormGroup;
@@ -21,7 +23,7 @@ export class PlayerViewComponent implements OnInit {
   playerDataCollected : Boolean = false;
 
   constructor(
-    private http : HttpService,
+    private socketSharingService : SocketSharingService,
     private socket : SocketService,
     private router : Router) { }
 
@@ -32,8 +34,6 @@ export class PlayerViewComponent implements OnInit {
       this.me = JSON.parse(sessionStorage.getItem('player'));
       this.playerDataCollected = true;
     }
-
-
 
     this.playerDataForm = new FormGroup({
       playerName: new FormControl(''),
@@ -50,11 +50,17 @@ export class PlayerViewComponent implements OnInit {
   connect() {
     this.socket.connect(this.connectToDMForm.controls.room.value);
     sessionStorage.setItem('room', this.connectToDMForm.controls.room.value.toString());
+
+    sessionStorage.setItem('socket', JSON.stringify(this.socket));
+
     this.socket.playerConnected(this.me);
     this.connectedToDM = true;
 
     this.subscriptions.push(this.socket.onCombatBegin().subscribe(() => {
       this.router.navigate(['player/encounter']);
+      setTimeout(() => {
+        this.socketSharingService.shareSocket(this.socket);
+      }, 1000);
     }));
   }
 
@@ -77,6 +83,7 @@ export class PlayerViewComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    this.socket.disconnect();
     this.subscriptions.forEach(element => {
       element.unsubscribe();
     });

@@ -1,31 +1,48 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DefaultComponent, DMViewComponent, PlayerViewComponent } from './views';
-import { SecretResolver } from './resolvers';
+import { DefaultComponent, DMViewComponent, PlayerViewComponent, LoginComponent } from './views';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: DefaultComponent,
     data: {
       title: 'DNDToolkitApp'
     }
   },
   {
+    path:'',
+    component: LoginComponent
+  },
+  {
     path: 'dm',
-    component: DMViewComponent,
+    component: DMLandingPageComponent,
     data: {
-      title: 'DM View'
+      title: 'DM Landing Page'
     }, 
     resolve: {
       room: SecretResolver
     }
   },
   {
-    path: 'player',
-    component: PlayerViewComponent,
+    path: 'dm/encounter',
+    component: DMEncounterComponent,
     data: {
-      title: 'Player View'
+      title: 'DM Encounter'
+    }
+  },
+  {
+    path: 'player',
+    component: PlayerLandingPageComponent,
+    data: {
+      title: 'Player Landing Page'
+    }
+  },
+  {
+    path: 'player/encounter',
+    component: PlayerEncounterComponent,
+    data: {
+      title: 'Player Encounter'
     }
   }
 ];
