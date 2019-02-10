@@ -9,6 +9,11 @@ import { AppComponent } from './app.component';
 import { DefaultComponent, DMViewComponent, PlayerViewComponent } from './views';
 import { LoginComponent } from './views/login/login.component';
 
+import Amplify, { Auth } from 'aws-amplify';
+import awsmobile from '../aws-exports';
+
+Amplify.configure(awsmobile);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +29,7 @@ import { LoginComponent } from './views/login/login.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [SecretResolver],
+  //providers: [SecretResolver],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

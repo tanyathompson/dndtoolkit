@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "oolkitpp-20190209095601-authRole",
+            "UnauthRoleArn": "arn:aws:iam::513871774175:role/oolkitpp-20190209095601-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::513871774175:role/oolkitpp-20190209095601-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "oolkitpp-20190209095601-deployment",
+            "UnauthRoleName": "oolkitpp-20190209095601-unauthRole",
+            "StackName": "oolkitpp-20190209095601",
+            "StackId": "arn:aws:cloudformation:us-east-2:513871774175:stack/oolkitpp-20190209095601/3394d2c0-2c83-11e9-bab3-02278d0d93fc"
+        }
+    }
+}

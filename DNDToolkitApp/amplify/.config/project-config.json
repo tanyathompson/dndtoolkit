@@ -1,0 +1,20 @@
+{
+    "projectName": "DNDToolkitApp",
+    "projectPath": "T:\\_Git\\dndtoolkit\\DNDToolkitApp",
+    "defaultEditor": "code",
+    "frontendHandler": {
+        "javascript": "C:\\Users\\Corbin Murrow\\AppData\\Roaming\\npm\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-frontend-javascript"
+    },
+    "javascript": {
+        "framework": "angular",
+        "config": {
+            "SourceDir": "src",
+            "DistributionDir": "dist",
+            "BuildCommand": "npm.cmd run-script build",
+            "StartCommand": "ng serve"
+        }
+    },
+    "providers": {
+        "awscloudformation": "C:\\Users\\Corbin Murrow\\AppData\\Roaming\\npm\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-provider-awscloudformation"
+    }
+}

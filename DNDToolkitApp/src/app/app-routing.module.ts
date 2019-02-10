@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path:'',
     component: LoginComponent
-  },
+  }/*,
   {
     path: 'dm',
     component: DMLandingPageComponent,
@@ -44,7 +44,7 @@ const routes: Routes = [
     data: {
       title: 'Player Encounter'
     }
-  }
+  }*/
 ];
 
 @NgModule({
