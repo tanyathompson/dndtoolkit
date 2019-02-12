@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-/* @import "~bootswatch/dist/lux/bootstrap.min.css"; */
 @import "~bootstrap-material-design/dist/css/bootstrap-material-design.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import url('https://fonts.googleapis.com/css?family=Scada');
 
 html,

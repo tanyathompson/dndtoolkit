@@ -6,8 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DefaultComponent, DMViewComponent, PlayerViewComponent } from './views';
-import { LoginComponent } from './views/login/login.component';
+import { DefaultComponent, DMViewComponent, PlayerViewComponent, LoginComponent, DashboardComponent, DmDashboardComponent } from './views';
+import { SecretResolver } from './resolvers';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,9 @@ import { LoginComponent } from './views/login/login.component';
     DefaultComponent,
     DMViewComponent,
     PlayerViewComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    DmDashboardComponent
   ],
   imports: [
     BrowserModule,

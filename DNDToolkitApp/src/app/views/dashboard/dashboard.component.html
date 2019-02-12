@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <h1>Games</h1>
+  <div class="row mt-4">
+    <div class="col">
+      <h4>Your Games</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th><button class="btn btn-success">New Game <i class="fas fa-plus"></i></button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3</td>
+            <td>Dragon's Demand</td>
+            <td><button class="btn btn-primary" routerLink="/dm-dashboard">Launch <i class="fas fa-play"></i></button></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Elemental Evil</td>
+            <td><button class="btn btn-primary" routerLink="/dm-dashboard">Launch <i class="fas fa-play"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h4>Previously Joined Games</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th><button class="btn btn-success">Find Game <i class="fas fa-search"></i></button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3</td>
+            <td>Exalted Realms</td>
+            <td><button class="btn btn-primary">Join <i class="fas fa-sign-in-alt"></i></button></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Tales of Alarra</td>
+            <td><button class="btn btn-primary">Join <i class="fas fa-sign-in-alt"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
